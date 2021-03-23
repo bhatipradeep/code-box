@@ -1,37 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-class x{
+class SingletonClass{
 private:
-    static x* instance;
-    x(){}
+    static SingletonClass* instance;
+
+    //private constructor: so that the object can't be formed
+    SingletonClass(){};
 public:
 
     //it will only let pass a single instance;
-    static x* getInstance(){
-        if(instance==0){
-            instance = new x();
+    static SingletonClass* getInstance(){
+        if(instance==NULL){
+            instance = new SingletonClass();
         }
         return instance;
     }
 
     static void resetInstance(){
-        instance=0;
+        instance=NULL;
     }
 };
 
-//initialise a instance with 0 so that we can start a single instnace
-x* x::instance = 0;
+//initially the instance should be null
+SingletonClass* SingletonClass::instance = NULL;
 
 
 int main(){
-    x* one = x::getInstance();
-    x* two = x::getInstance();
+
+    //below both will get same instance
+    SingletonClass* one = SingletonClass::getInstance();
+    SingletonClass* two = SingletonClass::getInstance();
     
-    //resetting instance;
-    x::resetInstance();
-    x* three = x::getInstance();
-    x* four = x::getInstance();
+    //resetting instance
+    SingletonClass::resetInstance();
+
+    //below both will get same instance
+    SingletonClass* three = SingletonClass::getInstance();
+    SingletonClass* four = SingletonClass::getInstance();
 
 
     cout<<one<<endl;
