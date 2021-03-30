@@ -1,3 +1,7 @@
 --For PlayerTest.cpp :
 Compile : g++ "PlayerTest.cpp" "../src/Player.cpp" -o PlayerTestOut.exe
 Execute : PlayerTestOut.exe
+
+--For MoveTest.cpp :
+Compile : g++ "MoveTest.cpp" "../src/Move.cpp" -o MoveTestOut.exe
+Execute : MoveTestOut.exe
