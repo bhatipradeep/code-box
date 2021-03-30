@@ -3,12 +3,12 @@
 class Player{
     private:
     std::string name;
-    std::string symbol;
+    char symbol;
 
     public:
-    Player(std::string name,std::string symbol);
+    Player(std::string name,char);
 
     std::string getName();
     
-    std::string getSymbol();
+    char getSymbol();
 };
