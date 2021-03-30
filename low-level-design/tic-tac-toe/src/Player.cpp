@@ -6,3 +6,11 @@ Player::Player(std::string name,std::string symbol){
     this->symbol=symbol;
 }
 
+std::string Player::getName(){
+    return name; 
+}
+
+std::string Player::getSymbol(){
+    return symbol;
+}
+

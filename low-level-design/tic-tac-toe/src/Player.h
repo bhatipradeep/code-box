@@ -8,11 +8,7 @@ class Player{
     public:
     Player(std::string name,std::string symbol);
 
-    std::string getName(){
-        return name;
-    }
-
-    std::string getSymbol(){
-        return symbol;
-    }
+    std::string getName();
+    
+    std::string getSymbol();
 };
