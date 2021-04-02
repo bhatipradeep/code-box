@@ -1,50 +1,111 @@
 #include "Board.h"
 #include "Move.h"
+#include <iostream>
+
 Board::Board(int size)
 {
-    this->size=size;
+    this->size = size;
+    rowSum = new int[size];
+    colSum = new int[size];
     this->board = new char *[size];
     for (int i = 0; i < size; i++)
     {
         this->board[i] = new char[size];
-        for(int j=0;j<size;j++){
-            board[i][j]=' ';
+        for (int j = 0; j < size; j++)
+        {
+            board[i][j] = ' ';
         }
     }
+    symbols = {' ', ' '};
 }
 
-bool Board::verifyMove(Move &move){
-    
-    bool verified = true;
-    if(winnerDeclared){
-        move.setStatus("Move invalid as winner is already been declared");
-        verified=false;
-    }else if(move.getX()>size-1 || move.getX()<0 || move.getY()>size-1 || move.getY()<0){
-        move.setStatus("Move location out of boundaries.");
-        verified = false;
-    }else if(board[move.getX()][move.getY()]!=' '){
-        move.setStatus("Move location is already occupied.");
-        verified=false;
-    }else{
-        move.setStatus("Move successfully placed on board.");
+void Board::addSymbols(char symbol1,char symbol2){
+    symbols = {symbol1,symbol2};
+}
+
+
+bool Board::verifyMove(Move &move)
+{
+
+    bool verified = false;
+    if (winnerDeclared)
+    {
+        move.setStatusMessage("Move invalid as winner is already been declared");
+        
+    }
+    else if (move.getX() > size - 1 || move.getX() < 0 || move.getY() > size - 1 || move.getY() < 0)
+    {
+        move.setStatusMessage("Move location out of boundaries.");
+        
+    }
+    else if (board[move.getX()][move.getY()] != ' ')
+    {
+        move.setStatusMessage("Move location is already occupied.");
+    }
+    else
+    {
+        move.setStatusMessage("Move successfully placed at on board.");
+        verified=true;
+    }
+    if (verified)
+    {
+        move.setStatus(1);
     }
     return verified;
 }
 
-void Board::computeWinner(Move move){
-
+void Board::computeWinner(Move move)
+{
+    int factor = move.getSymbol() == symbols.first ? 1 : -1;
+    rowSum[move.getX()] += factor;
+    colSum[move.getY()] += factor;
+    if (move.getX() == move.getY())
+    {
+        diagSum += factor;
+    }
+    if (move.getX() + move.getY() == size - 1)
+    {
+        reverseDiagSum += factor;
+    }
+    if (abs(rowSum[move.getX()]) == size || abs(colSum[move.getY()]) == size || abs(diagSum) == size || abs(reverseDiagSum) == size)
+    {
+        winnerDeclared = true;
+        winner = move.getSymbol();
+    }
 }
 
-
-void Board::makeMove(Move move){
-    if(verifyMove(move)==true){
+void Board::makeMove(Move &move)
+{
+    if (verifyMove(move) == true)
+    {
         board[move.getX()][move.getY()] = move.getSymbol();
         computeWinner(move);
     }
 }
 
-
-void Board::displayBoard(){
-
-    
+void Board::displayBoard()
+{
+    for (int i = 0; i < size * 2; i++)
+    {
+        std::cout << "-";
+    }
+    std::cout << std::endl;
+    for (int i = 0; i < size; i++)
+    {
+        std::cout << "|";
+        for (int j = 0; j < size; j++)
+        {
+            std::cout << board[i][j] << "|";
+        }
+        std::cout << std::endl;
+        for (int j = 0; j < size * 2; j++)
+        {
+            std::cout << "-";
+        }
+        std::cout << std::endl;
+    }
+    if (winnerDeclared)
+    {
+        std::cout << "Game Over. Winner :" << winner;
+    }
 }

@@ -6,9 +6,9 @@ class Player{
     char symbol;
 
     public:
-    Player(std::string name,char);
+    Player(){};
+    Player(std::string name,char symbol);
 
     std::string getName();
-    
     char getSymbol();
 };

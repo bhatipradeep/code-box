@@ -19,10 +19,18 @@ char Move::getSymbol(){
     return symbol;
 }
 
-std::string Move::getStatus(){
+int Move::getStatus(){
     return status;
 }
 
-void Move::setStatus(std::string status){
+void Move::setStatus(int status){
     this->status = status;
+}
+
+std::string Move::getStatusMessage(){
+    return statusMessage;
+}
+
+void Move::setStatusMessage(std::string statusMessage){
+    this->statusMessage = statusMessage;
 }
