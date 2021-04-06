@@ -32,7 +32,7 @@ void Game::makeMove(int x, int y)
         movesRecord.push_back(move);
     }
     board.displayBoard();
-    std::cout << move.getStatusMessage() << std::endl;
+    std::cout << "Move Status: "<<move.getStatusMessage() << std::endl;
 }
 
 void Game::printMoves(){

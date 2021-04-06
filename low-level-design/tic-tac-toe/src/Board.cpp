@@ -5,8 +5,6 @@
 Board::Board(int size)
 {
     this->size = size;
-    rowSum = new int[size];
-    colSum = new int[size];
     this->board = new char *[size];
     for (int i = 0; i < size; i++)
     {
@@ -16,13 +14,20 @@ Board::Board(int size)
             board[i][j] = ' ';
         }
     }
+    rowSum = new int[size];
+    colSum = new int[size];
+    for (int i = 0; i < size; i++)
+    {
+        rowSum[i] = 0;
+        colSum[i] = 0;
+    }
     symbols = {' ', ' '};
 }
 
-void Board::addSymbols(char symbol1,char symbol2){
-    symbols = {symbol1,symbol2};
+void Board::addSymbols(char symbol1, char symbol2)
+{
+    symbols = {symbol1, symbol2};
 }
-
 
 bool Board::verifyMove(Move &move)
 {
@@ -30,13 +35,11 @@ bool Board::verifyMove(Move &move)
     bool verified = false;
     if (winnerDeclared)
     {
-        move.setStatusMessage("Move invalid as winner is already been declared");
-        
+        move.setStatusMessage("Invalid move. Winner already declared.");
     }
     else if (move.getX() > size - 1 || move.getX() < 0 || move.getY() > size - 1 || move.getY() < 0)
     {
         move.setStatusMessage("Move location out of boundaries.");
-        
     }
     else if (board[move.getX()][move.getY()] != ' ')
     {
@@ -44,8 +47,8 @@ bool Board::verifyMove(Move &move)
     }
     else
     {
-        move.setStatusMessage("Move successfully placed at on board.");
-        verified=true;
+        move.setStatusMessage("Move successfully placed on board.");
+        verified = true;
     }
     if (verified)
     {
@@ -56,9 +59,11 @@ bool Board::verifyMove(Move &move)
 
 void Board::computeWinner(Move move)
 {
-    int factor = move.getSymbol() == symbols.first ? 1 : -1;
+    int factor = (move.getSymbol() == symbols.first ? 1 : -1);
     rowSum[move.getX()] += factor;
     colSum[move.getY()] += factor;
+
+
     if (move.getX() == move.getY())
     {
         diagSum += factor;
@@ -98,7 +103,7 @@ void Board::displayBoard()
             std::cout << board[i][j] << "|";
         }
         std::cout << std::endl;
-        for (int j = 0; j < size * 2; j++)
+        for (int j = 0; j < size * 2 + 2; j++)
         {
             std::cout << "-";
         }
@@ -106,6 +111,6 @@ void Board::displayBoard()
     }
     if (winnerDeclared)
     {
-        std::cout << "Game Over. Winner :" << winner;
+        std::cout << "Game Over. Winner: " << winner<<std::endl;
     }
 }

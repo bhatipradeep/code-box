@@ -1,5 +1,8 @@
 
+#ifndef MOVE_H_
+#define MOVE_H_
 #include<string>
+
 
 class Move{
     private:
@@ -20,3 +23,5 @@ class Move{
     int getStatus();
     void setStatus(int status);
 };
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef PLAYER_H_
+#define PLAYER_H_
+
 #include<string>
 
 class Player{
@@ -12,3 +15,5 @@ class Player{
     std::string getName();
     char getSymbol();
 };
+
+#endif

@@ -1,3 +1,7 @@
+#ifndef GAME_H_
+#define GAME_H_
+
+
 #include "Player.h"
 #include "Move.h"
 #include <vector>
@@ -18,3 +22,6 @@ public:
     void makeMove(int x, int y);
     void printMoves();
 };
+
+
+#endif

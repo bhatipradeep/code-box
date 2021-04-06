@@ -1,3 +1,5 @@
+#ifndef BOARD_H_
+#define BOARD_H_
 
 #include <string>
 #include "Move.h"
@@ -24,3 +26,5 @@ public:
     void makeMove(Move &move);
     void displayBoard();
 };
+
+#endif
