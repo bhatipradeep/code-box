@@ -27,7 +27,7 @@ int main(){
 
     std::cout<<"Game will start with player - 1 move ! "<<std::endl;
     while(true){
-        std::cout<<"Enter x <space> y :";
+        std::cout<<"Enter Move -> x <space> y :";
         int x,y;
         std::cin>>x>>y;
         game.makeMove(x,y);
