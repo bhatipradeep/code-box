@@ -23,5 +23,7 @@ public:
         items.push_back(item);
     }
 
-    void payment(IPayment *paymentAlgo){}
+    void payment(IPayment *paymentAlgo){
+        paymentAlgo->pay();
+    }
 };
