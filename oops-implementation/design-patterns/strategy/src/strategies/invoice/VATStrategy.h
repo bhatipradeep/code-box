@@ -1,13 +1,19 @@
-#include"IInvoice.h"
 
+#ifndef _VATSTRATEGY_H
+#define _VATSTRATEGY_H
+#include"IInvoice.h"
+#include<iostream>
 class VATStrategy:public IInvoice{
     public:
     int calculateTaxes(){
-        //VAT based taxes calculating code here
+        std::cout<<"VAT based calculateTaxes applied"<<std::endl;
         return 0;
     }
     int calculateTotalBill(){
-        //VAT based total bill calculating code here
+        std::cout<<"VAT based calculateTaxes applied"<<std::endl;
         return 0;
     }
 };
+
+
+#endif

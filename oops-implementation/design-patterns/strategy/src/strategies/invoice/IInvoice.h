@@ -1,3 +1,6 @@
+#ifndef _IINVOICE_H
+#define _IINVOICE_H
+
 class IInvoice{
     public:
     virtual ~IInvoice(){};
@@ -5,3 +8,5 @@ class IInvoice{
     virtual int calculateTotalBill()=0; 
 
 };
+
+#endif

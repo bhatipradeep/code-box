@@ -1,13 +1,20 @@
-#include"IInvoice.h"
+#ifndef _GSTSTRATEGY_H
+#define _GSTSTRATEGY_H
 
+
+#include"IInvoice.h"
+#include<iostream>
 class GSTStrategy:public IInvoice{
     public:
     int calculateTaxes(){
-        //GST based taxes calculating code here
+        std::cout<<"GST based calculateTaxes applied"<<std::endl;
         return 0;
     }
     int calculateTotalBill(){
-        //GST based total bill calculating code here
+        std::cout<<"GST based calculateTotalBill applied"<<std::endl;
         return 0;
     }
 };
+
+
+#endif

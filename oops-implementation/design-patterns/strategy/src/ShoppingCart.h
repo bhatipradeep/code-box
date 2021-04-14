@@ -1,6 +1,6 @@
 #include <vector>
-#include "src/strategies/invoice/IInvoice.h"
-#include "src/strategies/payment/IPayment.h"
+#include "strategies/invoice/IInvoice.h"
+#include "strategies/payment/IPayment.h"
 
 class Item
 {
@@ -25,5 +25,9 @@ public:
 
     void payment(IPayment *paymentAlgo){
         paymentAlgo->pay();
+    }
+
+    void totalBill(){
+        invoiceAlgo->calculateTaxes();
     }
 };
