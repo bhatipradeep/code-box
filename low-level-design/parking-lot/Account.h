@@ -49,7 +49,7 @@ class ParkingAttendent : public Account{
     public:
 
     void processVehicleEntry(Vehicle vehicle){
-        std::cout<<"Finding Parking spots and adding it to vehicle. DB calls are made";
+        std::cout<<"DB calls are made. Add Parking ticket to vehicle";
     }
 
     void processPayment(Vehicle vehicle,PaymentType paymentType){
