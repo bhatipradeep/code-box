@@ -10,7 +10,7 @@ class Vehicle{
 
 
     public:
-
+    Vehicle(){};
     Vehicle(std::string licensePlate,VehicleType vehicleType){
         this->licensePlate = licensePlate;
         this->vehicleType = vehicleType;

@@ -48,8 +48,8 @@ class ParkingAttendent : public Account{
 
     public:
 
-    void processVehicleEntry(Vehicle vehicle){
-        std::cout<<"DB calls are made. Add Parking ticket to vehicle";
+    void processVehicleEntry(Vehicle *vehicle){
+        std::cout<<"DB calls are made. Give(assign) Parking ticket to vehicle";
     }
 
     void processPayment(Vehicle vehicle,PaymentType paymentType){
